@@ -1,6 +1,7 @@
 export interface Task {
     id: number;
     text: string;
+    isCompleted: boolean;
 }
 
 export class DataBase {
@@ -14,15 +15,18 @@ export class DataBase {
         this.items.push({
             id: this.items.length,
             text: task,
+            isCompleted: false,
         });
     }
 
-    update(taskId: number, newTask: string): void {
+    update(taskId: number, newTask?: string, isCompleted?: boolean): void {
         this.items = this.items.map((t: Task) => {
             if (t.id === taskId) {
-                return {
-                    id: t.id,
-                    text: newTask,
+                if (newTask != null) {
+                    t.text = newTask;
+                }
+                if (isCompleted != null) {
+                    t.isCompleted = isCompleted;
                 }
             }
             return t;
