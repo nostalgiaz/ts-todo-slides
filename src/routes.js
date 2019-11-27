@@ -12,6 +12,6 @@ export default express.Router()
     res.status(201).send()
   })
   .put('/', (req, res) => {
-    db.update(req.body.old, req.body.new);
+    db.update(req.body.taskId, req.body.task);
     res.status(200).send()
   });
