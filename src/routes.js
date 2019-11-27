@@ -10,4 +10,8 @@ export default express.Router()
   .post('/', (req, res) => {
     db.create(req.body.text);
     res.status(201).send()
+  })
+  .put('/', (req, res) => {
+    db.update(req.body.old, req.body.new);
+    res.status(200).send()
   });
