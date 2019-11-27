@@ -1,16 +1,16 @@
 export class DataBase {
-    items = [];
+    private items: string[] = [];
 
-    list() {
+    list(): string[] {
         return this.items;
     }
 
-    create(task) {
+    create(task: string) {
         this.items.push(task);
     }
 
-    update(oldTask, newTask) {
-        this.items = this.items.map(t => {
+    update(oldTask: string, newTask: string): void {
+        this.items = this.items.map((t: string) => {
             if (t === oldTask) {
                 return newTask
             }
